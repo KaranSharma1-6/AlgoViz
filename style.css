@@ -876,23 +876,24 @@ header, nav, .navbar {
     height: 380px !important;
     position: relative !important;
 }
-
-/* Wrap the container in a scrollable overflow box so users can swipe */
-.graph-container-wrapper,
-.recursion-container-wrapper,
-.visualizer-box {
+/* Force the background container to be long and scrollable on mobile */
+.graph-container, 
+.recursion-container {
     width: 100% !important;
+    min-width: 700px !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Ensure the canvas matches the container's wide layout */
+/* Sledgehammer override to stop JS from inline-squishing the canvas */
 .graph-container canvas, 
-.graph-container svg,
-.recursion-container canvas, 
+.recursion-container canvas,
+.graph-container svg, 
 .recursion-container svg {
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 650px !important;
+    width: 700px !important;
+    min-width: 700px !important;
+    height: 400px !important;
+    max-width: none !important;
+    object-fit: fill !important;
 }
