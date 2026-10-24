@@ -1856,3 +1856,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showPage('hub');
 });
+function updateCanvasSize() {
+    const graphCanvas = document.getElementById('graphCanvas');
+    if (!graphCanvas) return;
+
+    const container = graphCanvas.parentElement;
+    graphCanvas.width = container.clientWidth;
+
+    // Allocate 450px height on mobile screens so bottom nodes have room, 320px on desktop
+    if (window.innerWidth <= 768) {
+        graphCanvas.height = 450;
+    } else {
+        graphCanvas.height = 320;
+    }
+
+    // Re-render graph/recursion tree if your code has a render function
+    if (typeof drawGraph === 'function') drawGraph();
+    if (typeof drawTree === 'function') drawTree();
+}
+
+// Run on load and on window resize
+window.addEventListener('resize', updateCanvasSize);
+window.addEventListener('DOMContentLoaded', updateCanvasSize);

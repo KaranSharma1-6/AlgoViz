@@ -868,26 +868,19 @@ header, nav, .navbar {
     transform: none !important;
 }
 @media (max-width: 768px) {
-    /* 1. Make containers dynamic so the green border expands around all nodes */
     .graph-container,
     .recursion-container,
     .visualizer-container {
+        width: 100% !important;
         height: auto !important;
-        min-height: 460px !important;
-        padding-bottom: 24px !important;
-        overflow: hidden !important; /* Prevents nodes from bleeding past borders */
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
     }
 
-    /* 2. Prevent canvas warping by preserving proportions */
     #graphCanvas,
-    .recursion-container canvas,
-    .graph-container canvas {
+    canvas {
+        display: block !important;
         width: 100% !important;
-        height: 100% !important;
-        max-height: 420px !important;
-        object-fit: contain !important;
+        height: auto !important; /* Lets JS canvas.height control true aspect ratio */
     }
 }
