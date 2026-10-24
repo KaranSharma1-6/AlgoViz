@@ -867,14 +867,18 @@ header, nav, .navbar {
     position: static !important;
     transform: none !important;
 }
-/* Remove the height distortion and maintain proper graph proportions */
-canvas, svg {
+
+/* Scope the sizing rules strictly to graph and recursion viewports so icons stay untouched */
+.graph-container canvas, 
+.graph-container svg,
+.recursion-container canvas, 
+.recursion-container svg {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
 }
 
-/* Keep the graph container stable on mobile */
+/* Keep the containers stable on mobile */
 .graph-container, 
 .recursion-container {
     width: 100% !important;
