@@ -868,25 +868,25 @@ header, nav, .navbar {
     transform: none !important;
 }
 
-/* Force the graph viewport to maintain a clean desktop aspect ratio with horizontal scrolling on mobile */
+/* Force the container to break out of flex/grid shrinking and enable smooth scrolling */
 .graph-container, 
 .recursion-container {
     width: 100% !important;
+    max-width: 100% !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    padding: 10px;
+    flex-shrink: 0 !important;
 }
 
-/* Prevent canvas/svg from shrinking below its natural layout width */
+/* Force the actual drawing area to stay at a fixed, wide desktop size */
 .graph-container canvas, 
 .graph-container svg,
 .recursion-container canvas, 
 .recursion-container svg {
-    min-width: 600px !important;
-    height: 350px !important;
-    display: block;
-    margin: 0 auto;
+    width: 650px !important;
+    min-width: 650px !important;
+    height: 380px !important;
+    max-width: none !important;
+    display: block !important;
 }
