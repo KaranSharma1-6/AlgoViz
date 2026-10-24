@@ -868,22 +868,23 @@ header, nav, .navbar {
     transform: none !important;
 }
 
-/* Scope the sizing rules strictly to graph and recursion viewports so icons stay untouched */
+/* Enable smooth horizontal scrolling on mobile so graphs never warp or squish */
+.graph-container, 
+.recursion-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+/* Give the inner canvas/svg a stable minimum width so node spacing stays pristine */
 .graph-container canvas, 
 .graph-container svg,
 .recursion-container canvas, 
 .recursion-container svg {
-    width: 100% !important;
+    min-width: 550px !important; 
     height: 100% !important;
+    max-width: none !important;
     object-fit: contain !important;
-}
-
-/* Keep the containers stable on mobile */
-.graph-container, 
-.recursion-container {
-    width: 100% !important;
-    aspect-ratio: 16 / 9;
-    max-height: 50vh;
-    position: relative;
-    overflow: hidden;
 }
