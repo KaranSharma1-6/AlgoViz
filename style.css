@@ -867,3 +867,20 @@ header, nav, .navbar {
     position: static !important;
     transform: none !important;
 }
+/* Make graph and recursion viewports responsive on mobile */
+.graph-container, 
+.recursion-container, 
+canvas, 
+svg {
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
+}
+
+/* Allow smooth horizontal scrolling if a graph is wide */
+.visualizer-box, 
+.canvas-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
