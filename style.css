@@ -868,13 +868,26 @@ header, nav, .navbar {
     transform: none !important;
 }
 @media (max-width: 768px) {
-    /* Extend graph and recursion visualizer container heights on mobile */
-    .graph-container, 
-    #graphCanvas, 
-    canvas, 
-    .visualizer-container,
-    .recursion-container {
-        min-height: 360px !important;
-        padding-bottom: 20px !important;
+    /* 1. Make containers dynamic so the green border expands around all nodes */
+    .graph-container,
+    .recursion-container,
+    .visualizer-container {
+        height: auto !important;
+        min-height: 460px !important;
+        padding-bottom: 24px !important;
+        overflow: hidden !important; /* Prevents nodes from bleeding past borders */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 2. Prevent canvas warping by preserving proportions */
+    #graphCanvas,
+    .recursion-container canvas,
+    .graph-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 420px !important;
+        object-fit: contain !important;
     }
 }
