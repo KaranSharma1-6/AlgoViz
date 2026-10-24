@@ -868,25 +868,31 @@ header, nav, .navbar {
     transform: none !important;
 }
 
-/* Force the container to break out of flex/grid shrinking and enable smooth scrolling */
+/* Force the background wrapper to be wide enough on mobile so the graph doesn't squish */
 .graph-container, 
 .recursion-container {
     width: 100% !important;
-    max-width: 100% !important;
+    min-width: 650px !important; /* Forces the background container to stay wide */
+    height: 380px !important;
+    position: relative !important;
+}
+
+/* Wrap the container in a scrollable overflow box so users can swipe */
+.graph-container-wrapper,
+.recursion-container-wrapper,
+.visualizer-box {
+    width: 100% !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    flex-shrink: 0 !important;
 }
 
-/* Force the actual drawing area to stay at a fixed, wide desktop size */
+/* Ensure the canvas matches the container's wide layout */
 .graph-container canvas, 
 .graph-container svg,
 .recursion-container canvas, 
 .recursion-container svg {
-    width: 650px !important;
+    width: 100% !important;
+    height: 100% !important;
     min-width: 650px !important;
-    height: 380px !important;
-    max-width: none !important;
-    display: block !important;
 }
