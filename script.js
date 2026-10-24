@@ -718,7 +718,7 @@ function syncSearchTargetButtons() {
             pBtn.style.borderColor = '#38bdf8';
             pBtn.style.color = '#38bdf8';
             pBtn.style.boxShadow = '0 0 8px rgba(56, 189, 248, 0.5)';
-
+            
             mBtn.style.borderColor = '#374151'; // default secondary state
             mBtn.style.color = '#9ca3af';
             mBtn.style.boxShadow = 'none';
@@ -726,8 +726,8 @@ function syncSearchTargetButtons() {
             mBtn.style.borderColor = '#38bdf8';
             mBtn.style.color = '#38bdf8';
             mBtn.style.boxShadow = '0 0 8px rgba(56, 189, 248, 0.5)';
-
-            pBtn.style.borderColor = '#374151';
+            
+            pBtn.style.borderColor = '#374151'; 
             pBtn.style.color = '#9ca3af';
             pBtn.style.boxShadow = 'none';
         }
@@ -738,7 +738,7 @@ function generateNewCanvasData(mode = 'random') {
     stopAnimation();
     const sizeVal = parseInt(document.getElementById('sizeSlider').value);
     document.getElementById('sizeDisplay').textContent = sizeVal;
-
+    
     if (currentCategory === 'sorting') {
         array = [];
         if (mode === 'best') {
@@ -780,7 +780,7 @@ function generateNewCanvasData(mode = 'random') {
             searchTarget = candidate;
         }
     }
-
+    
     fetchBackendHistory().then(() => {
         currentStepIndex = 0;
         renderCanvasFrame(history[0], 0);
@@ -804,7 +804,7 @@ function updateSearchTargetSetting() {
         let candidate = Math.floor(Math.random() * (max - min + 1)) + min;
         while (array.includes(candidate)) {
             candidate++;
-            if (candidate > max + 5) candidate = min - 5;
+            if (candidate > max + 5) candidate = min - 5; 
         }
         searchTarget = candidate;
     }
@@ -830,59 +830,59 @@ async function fetchBackendHistory() {
             let n = a.length;
             history.push({ array: [...a], pointers: {}, sortedIndices: [], lineNum: 1 });
             for (let i = 1; i < n; i++) {
-                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 2 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 2 });
                 let key = a[i];
-                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 3 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 3 });
                 let j = i - 1;
-                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' }, [j]: { label: 'j', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 4 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' }, [j]: { label: 'j', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 4 });
 
                 while (j >= 0 && a[j] > key) {
-                    history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' }, [j]: { label: 'j', color: '#d97706' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 5 });
+                    history.push({ array: [...a], pointers: { [i]: { label: 'key', color: '#f97316' }, [j]: { label: 'j', color: '#d97706' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 5 });
                     a[j + 1] = a[j];
-                    history.push({ array: [...a], pointers: { [j + 1]: { label: 'j+1', color: '#38bdf8' }, [j]: { label: 'j', color: '#d97706' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 6 });
+                    history.push({ array: [...a], pointers: { [j + 1]: { label: 'j+1', color: '#38bdf8' }, [j]: { label: 'j', color: '#d97706' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 6 });
                     j -= 1;
-                    history.push({ array: [...a], pointers: { [j + 1]: { label: 'j', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 7 });
+                    history.push({ array: [...a], pointers: { [j + 1]: { label: 'j', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 7 });
                 }
                 a[j + 1] = key;
-                history.push({ array: [...a], pointers: { [j + 1]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({ length: i + 1 }, (_, idx) => idx), lineNum: 8 });
+                history.push({ array: [...a], pointers: { [j + 1]: { label: 'key', color: '#f97316' } }, sortedIndices: Array.from({length: i + 1}, (_, idx) => idx), lineNum: 8 });
             }
-            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: n }, (_, idx) => idx), lineNum: 9 });
+            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: n}, (_, idx) => idx), lineNum: 9 });
 
         } else if (currentAlgoId === 'bubble') {
             let n = a.length;
             history.push({ array: [...a], pointers: {}, sortedIndices: [], lineNum: 2 });
             for (let i = 0; i < n - 1; i++) {
-                history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: i }, (_, idx) => n - 1 - idx), lineNum: 3 });
+                history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: i}, (_, idx) => n - 1 - idx), lineNum: 3 });
                 for (let j = 0; j < n - 1 - i; j++) {
-                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [j + 1]: { label: 'j+1', color: '#d97706' } }, sortedIndices: Array.from({ length: i }, (_, idx) => n - 1 - idx), lineNum: 4 });
-                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [j + 1]: { label: 'j+1', color: '#d97706' } }, sortedIndices: Array.from({ length: i }, (_, idx) => n - 1 - idx), lineNum: 5 });
+                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [j + 1]: { label: 'j+1', color: '#d97706' } }, sortedIndices: Array.from({length: i}, (_, idx) => n - 1 - idx), lineNum: 4 });
+                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [j + 1]: { label: 'j+1', color: '#d97706' } }, sortedIndices: Array.from({length: i}, (_, idx) => n - 1 - idx), lineNum: 5 });
                     if (a[j] > a[j + 1]) {
                         let temp = a[j]; a[j] = a[j + 1]; a[j + 1] = temp;
-                        history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#38bdf8' }, [j + 1]: { label: 'j+1', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => n - 1 - idx), lineNum: 6 });
+                        history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#38bdf8' }, [j + 1]: { label: 'j+1', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => n - 1 - idx), lineNum: 6 });
                     }
                 }
             }
-            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: n }, (_, idx) => idx), lineNum: 8 });
+            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: n}, (_, idx) => idx), lineNum: 8 });
 
         } else if (currentAlgoId === 'selection') {
             let n = a.length;
             history.push({ array: [...a], pointers: {}, sortedIndices: [], lineNum: 2 });
             for (let i = 0; i < n - 1; i++) {
-                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#d97706' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 3 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#d97706' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 3 });
                 let m = i;
-                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 4 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 4 });
                 for (let j = i + 1; j < n; j++) {
-                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 5 });
-                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 6 });
+                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 5 });
+                    history.push({ array: [...a], pointers: { [j]: { label: 'j', color: '#d97706' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 6 });
                     if (a[j] < a[m]) {
                         m = j;
-                        history.push({ array: [...a], pointers: { [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i }, (_, idx) => idx), lineNum: 7 });
+                        history.push({ array: [...a], pointers: { [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({length: i}, (_, idx) => idx), lineNum: 7 });
                     }
                 }
                 let temp = a[i]; a[i] = a[m]; a[m] = temp;
-                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#38bdf8' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({ length: i + 1 }, (_, idx) => idx), lineNum: 8 });
+                history.push({ array: [...a], pointers: { [i]: { label: 'i', color: '#38bdf8' }, [m]: { label: 'm', color: '#38bdf8' } }, sortedIndices: Array.from({length: i + 1}, (_, idx) => idx), lineNum: 8 });
             }
-            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: n }, (_, idx) => idx), lineNum: 9 });
+            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: n}, (_, idx) => idx), lineNum: 9 });
 
         } else if (currentAlgoId === 'quick') {
             function quickSortHelper(arr, lo, hi) {
@@ -912,7 +912,7 @@ async function fetchBackendHistory() {
                 quickSortHelper(arr, i + 1, hi);
             }
             quickSortHelper(a, 0, a.length - 1);
-            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: a.length }, (_, idx) => idx), lineNum: 10 });
+            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: a.length}, (_, idx) => idx), lineNum: 10 });
 
         } else {
             function mergeSortHelper(arr, lo, hi) {
@@ -943,7 +943,7 @@ async function fetchBackendHistory() {
                 }
             }
             mergeSortHelper(a, 0, a.length - 1);
-            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({ length: a.length }, (_, idx) => idx), lineNum: 1 });
+            history.push({ array: [...a], pointers: {}, sortedIndices: Array.from({length: a.length}, (_, idx) => idx), lineNum: 1 });
         }
 
     } else if (currentCategory === 'graph') {
@@ -1160,7 +1160,7 @@ async function fetchBackendHistory() {
         } else if (currentAlgoId === 'kruskal') {
             let mstEdges = new Set();
             let sortedEdges = [...allEdges].sort((a, b) => a.weight - b.weight);
-            let parentDisjoint = Array.from({ length: nodeCount }, (_, i) => i);
+            let parentDisjoint = Array.from({length: nodeCount}, (_, i) => i);
             function find(i) { return parentDisjoint[i] === i ? i : (parentDisjoint[i] = find(parentDisjoint[i])); }
 
             let visited = new Set([0]);
@@ -1287,7 +1287,7 @@ async function fetchBackendHistory() {
         // core category (Recursion)
         history = [];
         let n = parseInt(document.getElementById('sizeSlider').value) || 7;
-
+        
         let nodeCounter = 0;
         let treeNodes = [];
         let edges = [];
@@ -1297,7 +1297,7 @@ async function fetchBackendHistory() {
             let id = nodeCounter++;
             let node = { id, val, depth, x, y, state: 'pending', result: null };
             treeNodes.push(node);
-
+            
             if (val <= 1) return id;
 
             let leftId = buildTree(val - 1, depth + 1, x - offsetX, y + 45, offsetX * 0.52);
@@ -1308,7 +1308,7 @@ async function fetchBackendHistory() {
 
             return id;
         }
-        buildTree(n, 0, 50, 40, 24);
+        buildTree(n, 0, 50, 40, 24); 
 
         // Step 0: Initial blank state
         history.push({
@@ -1320,7 +1320,7 @@ async function fetchBackendHistory() {
         // 2. Trace execution (Exactly 2 pushes per node = correct step count)
         function traceFib(nodeId) {
             let node = treeNodes.find(n => n.id === nodeId);
-
+            
             node.state = 'evaluating';
             history.push({
                 nodes: JSON.parse(JSON.stringify(treeNodes)),
@@ -1339,7 +1339,7 @@ async function fetchBackendHistory() {
                 return node.result;
             }
 
-            node.state = 'stack';
+            node.state = 'stack'; 
             let leftChildId = edges.filter(e => e.u === nodeId)[0].v;
             let rightChildId = edges.filter(e => e.u === nodeId)[1].v;
 
@@ -1357,7 +1357,7 @@ async function fetchBackendHistory() {
             return node.result;
         }
 
-        traceFib(0);
+        traceFib(0); 
     }
 }
 
@@ -1400,7 +1400,7 @@ function renderCanvasFrame(stateObj, stepIdx) {
             bar.style.width = '100%';
             const calculatedHeight = Math.max(25, Math.floor((val / maxVal) * 210));
             bar.style.height = `${calculatedHeight}px`;
-
+            
             let color = '#4b5563';
             if (sortedIndices.includes(idx)) {
                 color = '#059669';
@@ -1429,7 +1429,7 @@ function renderCanvasFrame(stateObj, stepIdx) {
 
             container.appendChild(barWrapper);
         });
-    }
+    } 
     else if (currentCategory === 'graph') {
         const state = stateObj || { nodeCount: 5, currentNode: 0, visitedNodes: [0], frontierNodes: [], visitedEdges: [], edges: [] };
         const n = state.nodeCount;
@@ -1441,11 +1441,11 @@ function renderCanvasFrame(stateObj, stepIdx) {
 
         let coords = [];
         if (n === 4) {
-            coords = [{ x: 200, y: 90, id: 'A' }, { x: 320, y: 180, id: 'B' }, { x: 200, y: 270, id: 'C' }, { x: 80, y: 180, id: 'D' }];
+            coords = [{x:200, y:90, id:'A'}, {x:320, y:180, id:'B'}, {x:200, y:270, id:'C'}, {x:80, y:180, id:'D'}];
         } else if (n === 6) {
-            coords = [{ x: 200, y: 60, id: 'A' }, { x: 320, y: 120, id: 'B' }, { x: 320, y: 240, id: 'C' }, { x: 200, y: 280, id: 'D' }, { x: 80, y: 240, id: 'E' }, { x: 80, y: 120, id: 'F' }];
+            coords = [{x:200, y:60, id:'A'}, {x:320, y:120, id:'B'}, {x:320, y:240, id:'C'}, {x:200, y:280, id:'D'}, {x:80, y:240, id:'E'}, {x:80, y:120, id:'F'}];
         } else {
-            coords = [{ x: 180, y: 80, id: 'A' }, { x: 320, y: 120, id: 'B' }, { x: 250, y: 240, id: 'C' }, { x: 120, y: 180, id: 'D' }, { x: 200, y: 150, id: 'E' }];
+            coords = [{x:180, y:80, id:'A'}, {x:320, y:120, id:'B'}, {x:250, y:240, id:'C'}, {x:120, y:180, id:'D'}, {x:200, y:150, id:'E'}];
         }
 
         let svgLines = '';
@@ -1490,14 +1490,14 @@ function renderCanvasFrame(stateObj, stepIdx) {
         }).join('');
 
         container.innerHTML = `
-<div style="position:relative; width: 600px; height: 420px; min-width: 600px; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-    <svg width="600" height="420" style="position:absolute; top:0; left:0;">
-        ${svgLines}
-    </svg>
-    ${nodesHtml}
-</div>
-`;
-    }
+            <div style="position:relative; width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                <svg width="100%" height="100%" style="position:absolute; top:0; left:0;">
+                    ${svgLines}
+                </svg>
+                ${nodesHtml}
+            </div>
+        `;
+    } 
     else if (currentCategory === 'searching') {
         const topHeader = document.createElement('div');
         topHeader.style.display = 'flex';
@@ -1623,7 +1623,7 @@ function renderCanvasFrame(stateObj, stepIdx) {
 
         let nodesHtml = nodes.map(n => {
             let style = `position:absolute; top:${n.y}px; left:calc(${n.x}% - 15px); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:bold; z-index:2;`;
-
+            
             if (n.state === 'stack') {
                 style += `border: 2px dashed #a855f7; background: #111827; color: #d8b4fe;`;
             } else if (n.state === 'evaluating') {
@@ -1645,13 +1645,11 @@ function renderCanvasFrame(stateObj, stepIdx) {
         }).join('');
 
         container.innerHTML = `
-<div style="position:relative; width: 600px; height: 420px; min-width: 600px; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-    <svg width="600" height="420" style="position:absolute; top:0; left:0;">
-        ${svgLines}
-    </svg>
-    ${nodesHtml}
-</div>
-`;
+            <div style="position:relative; width:100%; height:100%; overflow:hidden;">
+                <svg width="100%" height="100%" style="position:absolute; top:0; left:0; z-index:1;">${svgLines}</svg>
+                ${nodesHtml}
+            </div>
+        `;
     }
 }
 
@@ -1679,7 +1677,7 @@ function bindDynamicButtons() {
         if (!speedSlider.value || speedSlider.value < 0) speedSlider.value = 1;
 
         const speedLabel = speedSlider.previousElementSibling || (speedSlider.parentElement && speedSlider.parentElement.querySelector('label'));
-
+        
         const updateSpeedDisplay = () => {
             const idx = parseInt(speedSlider.value);
             const multiplier = speedMultipliers[idx] || 1;

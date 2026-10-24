@@ -867,16 +867,3 @@ header, nav, .navbar {
     position: static !important;
     transform: none !important;
 }
-/* Allow the viewport box to expand to fit the graph cleanly on PC and mobile */
-.graph-container, 
-.recursion-container {
-    width: 100% !important;
-    min-height: 440px !important;
-    height: auto !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
