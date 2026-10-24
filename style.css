@@ -867,32 +867,16 @@ header, nav, .navbar {
     position: static !important;
     transform: none !important;
 }
-
-/* Force the background wrapper to be wide enough on mobile so the graph doesn't squish */
+/* Allow the viewport box to expand to fit the graph cleanly on PC and mobile */
 .graph-container, 
 .recursion-container {
     width: 100% !important;
-    min-width: 650px !important; /* Forces the background container to stay wide */
-    height: 380px !important;
-    position: relative !important;
-}
-/* Force the background container to be long and scrollable on mobile */
-.graph-container, 
-.recursion-container {
-    width: 100% !important;
+    min-height: 440px !important;
+    height: auto !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-}
-
-/* Sledgehammer override to stop JS from inline-squishing the canvas */
-.graph-container canvas, 
-.recursion-container canvas,
-.graph-container svg, 
-.recursion-container svg {
-    width: 700px !important;
-    min-width: 700px !important;
-    height: 400px !important;
-    max-width: none !important;
-    object-fit: fill !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
