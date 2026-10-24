@@ -1,0 +1,869 @@
+:root {
+    --bg-black: #000000;
+    --card-bg: #0a0e14;
+    --card-border: #1a2332;
+    --neon-green: #00ff66;
+    --neon-green-glow: rgba(0, 255, 102, 0.3);
+    --neon-purple: #b026ff;
+    --neon-cyan: #00f0ff;
+    --text-main: #d1d5db;
+    --text-muted: #9ca3af;
+    --font-tech: 'Orbitron', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-main);
+    font-family: var(--font-code);
+    min-height: 100vh;
+    font-size: 0.9rem;
+}
+
+/* Navbar with Search Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background-color: #030508;
+    border-bottom: 1px solid #1f2937;
+}
+
+.logo {
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo .highlight {
+    color: var(--neon-green);
+    text-shadow: 0 0 6px var(--neon-green);
+}
+
+/* Search Algorithms Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    padding: 6px 12px;
+    width: 320px;
+}
+
+.search-container:focus-within {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+.search-icon {
+    font-size: 0.85rem;
+    margin-right: 8px;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 0.8rem;
+    width: 100%;
+    outline: none;
+    font-family: var(--font-code);
+}
+
+.search-shortcut {
+    font-size: 0.65rem;
+    background: #1f2937;
+    color: var(--text-muted);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #374151;
+}
+
+.nav-link-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border: 1px solid #374151;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-link-btn:hover {
+    color: var(--neon-green);
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 102, 0.05);
+}
+
+/* Main Container & Smaller Fonts */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 30px 20px;
+}
+
+.view-section {
+    display: none;
+}
+
+.view-section.active {
+    display: block;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.glitch-title {
+    font-family: var(--font-tech);
+    font-size: 1.8rem; /* Reduced font size */
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.neon-green { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green-glow); }
+.neon-purple { color: var(--neon-purple); text-shadow: 0 0 8px rgba(176,38,255,0.3); }
+.neon-cyan { color: var(--neon-cyan); text-shadow: 0 0 8px rgba(0,240,255,0.3); }
+
+.hero-sub {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.cyber-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.cyber-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green-glow);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.card-icon svg {
+    stroke: var(--neon-purple);
+    filter: drop-shadow(0 0 6px rgba(176,38,255,0.4));
+}
+
+.cyber-card h3 {
+    font-family: var(--font-tech);
+    font-size: 0.95rem; /* Compact font size */
+    margin-bottom: 6px;
+}
+
+.cyber-card p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.card-tag {
+    font-size: 0.65rem;
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Informational Blocks */
+.info-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--neon-green);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.info-block h2 {
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    color: var(--neon-green);
+    margin-bottom: 8px;
+}
+
+.info-block p, .info-block ul {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.info-block ul {
+    list-style-position: inside;
+}
+
+/* Sidebar & Layout */
+.visualizer-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 25px;
+}
+
+.sidebar { 
+    position: sticky;
+    top: 24px;              /* Stops 24px from the top of the screen */
+    height: fit-content;    /* Crucial: sticky won't work if the height is 100% */
+    align-self: flex-start; /* Crucial: required if the parent is a flexbox */
+    
+    /* Glassmorphism effect so the live shaders bleed through */
+    background: rgba(17, 24, 39, 0.5) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-title {
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    margin-bottom: 12px;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar li {
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebar li:hover, .sidebar li.active {
+    color: var(--neon-green);
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 102, 0.05);
+    box-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+/* Cyber Canvas Box */
+.cyber-canvas {
+    background: #020408;
+    border: 1px solid var(--neon-green);
+    box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.05), 0 0 10px var(--neon-green-glow);
+    height: 340px;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 5px;
+    padding: 15px;
+    margin-bottom: 16px;
+}
+
+/* Cyber Controls */
+.cyber-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.control-btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.cyber-btn {
+    padding: 8px 14px;
+    font-family: var(--font-tech);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border: 1px solid var(--neon-green);
+    background: transparent;
+    color: var(--neon-green);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cyber-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.custom-input-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.custom-input-box label {
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.input-row input {
+    flex: 1;
+    background: #000;
+    border: 1px solid var(--card-border);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+}
+
+.input-row input:focus {
+    border-color: var(--neon-green);
+    outline: none;
+    box-shadow: 0 0 6px var(--neon-green-glow);
+}
+
+/* Cyber Tables */
+.cyber-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+.cyber-table th, .cyber-table td {
+    border: 1px solid var(--card-border);
+    padding: 10px;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.cyber-table th {
+    background: #030508;
+    color: var(--neon-green);
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+
+.detail-section h3 {
+    font-family: var(--font-tech);
+    color: var(--neon-green);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.step-list {
+    padding-left: 18px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+/* ==========================================
+   RESPONSIVE DESIGN (Tablets & Phones)
+   ========================================== */
+
+/* Tablets & Small Laptops (Max Width: 900px) */
+@media (max-width: 900px) {
+    .visualizer-layout {
+        grid-template-columns: 1fr; /* Stack sidebar above visualizer */
+        gap: 15px;
+    }
+
+    .sidebar ul {
+        flex-direction: row; /* Horizontal scrolling algorithm tags on mobile */
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .sidebar li {
+        white-space: nowrap;
+        font-size: 0.75rem;
+    }
+
+    .cyber-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-btn-group {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .slider-group {
+        width: 100%;
+    }
+}
+
+/* Mobile Phones (Max Width: 600px) */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-container {
+        width: 100%; /* Full width search bar on small screens */
+        order: 3;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .main-content {
+        padding: 15px 10px;
+    }
+
+    .glitch-title {
+        font-size: 1.4rem;
+    }
+
+    .hero-sub {
+        font-size: 0.78rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column on phones */
+    }
+
+    .cyber-canvas {
+        height: 260px; /* Reduced canvas height for mobile screens */
+        padding: 10px;
+        gap: 2px;
+    }
+
+    .cyber-btn {
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+
+    .cyber-table th, .cyber-table td {
+        padding: 6px 8px;
+        font-size: 0.72rem;
+    }
+}
+/* Graph Node Styles */
+.graph-node {
+    width: 36px;
+    height: 36px;
+    background: #1f2937;
+    border: 2px solid #4b5563;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.graph-node.active {
+    background: #f43f5e;
+    border-color: #f43f5e;
+    box-shadow: 0 0 12px #f43f5e;
+}
+
+.graph-node.visited {
+    background: #00ff66;
+    border-color: #00ff66;
+    color: #000;
+    box-shadow: 0 0 12px rgba(0, 255, 102, 0.5);
+}
+
+/* Searching Pill Styles */
+.search-pill {
+    padding: 10px 14px;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+/* Tree Node Styles (Recursion) */
+.tree-node {
+    width: 44px;
+    height: 44px;
+    background: #1f2937;
+    border: 2px solid #b026ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tree-node.active {
+    background: #b026ff;
+    box-shadow: 0 0 15px #b026ff;
+}
+/* Code Snippet Box Style (Coddy Tech style) */
+.code-container {
+    background: #030508;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 25px;
+    font-family: var(--font-code);
+}
+
+.code-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.code-container pre {
+    color: #38bdf8;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* Legend Bar Style */
+.legend-bar {
+    display: flex;
+    gap: 15px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* Code Snippet Box & Line Highlighting */
+.code-container {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-family: var(--font-code);
+}
+
+.code-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.code-line {
+    display: flex;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.code-line .line-num {
+    width: 30px;
+    color: #484f58;
+    user-select: none;
+    text-align: right;
+    padding-right: 12px;
+}
+
+.code-line .line-content {
+    color: #c9d1d9;
+    white-space: pre;
+}
+
+/* Active Highlight Line Style (Coddy style) */
+.code-line.active-line {
+    background: rgba(56, 189, 248, 0.15);
+    border-left: 3px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.code-line.active-line .line-content {
+    color: #38bdf8;
+    font-weight: 600;
+}
+/* Sub-bar index pointers (i, j, key, pivot) */
+.bar-pointer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-top: 4px;
+    height: 24px;
+}
+
+.bar-pointer .arrow {
+    font-size: 0.55rem;
+    line-height: 1;
+}
+
+.bar-pointer .label {
+    margin-top: 1px;
+}
+/* Graph Node States */
+.graph-node {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: #c9d1d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    position: absolute;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.graph-node.active {
+    background: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px #38bdf8;
+}
+
+.graph-node.visited {
+    background: #059669 !important;
+    border-color: #059669 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px #059669;
+}
+
+/* Sub-bar index pointers (i, j, key, pivot) */
+.bar-pointer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-top: 4px;
+    height: 24px;
+}
+
+.bar-pointer .arrow {
+    font-size: 0.55rem;
+    line-height: 1;
+}
+
+.bar-pointer .label {
+    margin-top: 1px;
+}
+.graph-node.frontier {
+    background: #d97706 !important;
+    border-color: #d97706 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px #d97706;
+}
+/* ---------------------------------------------------
+   1. GLOBAL FONT SIZE REDUCTION
+   --------------------------------------------------- */
+html {
+    font-size: 14px !important; /* Scales down the entire UI */
+}
+
+/* ---------------------------------------------------
+   2. LIVE PURPLE AMBIENT SHADERS
+   --------------------------------------------------- */
+body {
+    position: relative;
+    z-index: 0;
+    overflow-x: hidden;
+    background-color: #0b0f19; /* Deep dark base */
+}
+
+/* ---------------------------------------------------
+   3. VIEW TRANSITIONS (SMOOTH FADE & SLIDE)
+   --------------------------------------------------- */
+#hubView, #categoryView, #visualizerView {
+    display: none;
+}
+
+#hubView.active, #categoryView.active, #visualizerView.active {
+    display: block; /* or flex, if your layout requires it */
+    animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+    0% { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ---------------------------------------------------
+   4. HUB BUTTON STYLING FIX
+   --------------------------------------------------- */
+
+.shader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: #0b0f19; /* Deep dark base */
+}
+
+.shader-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.4;
+    animation: orbFloat 20s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+    width: 45vw;
+    height: 45vw;
+    background: #a855f7; /* Purple */
+    top: -10%;
+    left: -10%;
+}
+
+.orb-2 {
+    width: 50vw;
+    height: 50vw;
+    background: #3b82f6; /* Blue */
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -7s;
+}
+
+.orb-3 {
+    width: 35vw;
+    height: 35vw;
+    background: #ec4899; /* Pink/Magenta */
+    top: 30%;
+    left: 40%;
+    animation-delay: -14s;
+    opacity: 0.25;
+}
+
+@keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(5vw, -5vh) scale(1.1); }
+    66% { transform: translate(-3vw, 4vh) scale(0.95); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+/* Glassmorphic background panels for tables and content sections */
+table, 
+.cyber-table, 
+.cyber-card, 
+#comparisonTableWrapper, 
+#stepByStepList, 
+#workedExampleText, 
+.sidebar {
+    background: rgba(17, 24, 39, 0.8) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+/* Ensure table cells look clean inside the new background */
+table th, table td {
+    background: transparent !important;
+}
+#stepByStepList {
+    list-style-position: inside !important;
+    padding-left: 4px !important;
+}
+/* Find the container holding your logo and search input (e.g., header, nav, or whatever tag wraps them) */
+header, nav, .navbar {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important; /* Left space, search bar in exact center, right spacer */
+    align-items: center !important;
+    position: relative !important;
+}
+
+/* Ensure the logo stays on the left */
+.logo {
+    grid-column: 1;
+    justify-self: start;
+}
+
+/* Force the search bar into the exact middle column */
+#globalSearchInput {
+    grid-column: 2 !important;
+    margin: 0 auto !important;
+    position: static !important;
+    transform: none !important;
+}

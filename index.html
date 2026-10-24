@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoViz // Cyberpunk Algorithm Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Orbitron:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Live Background Shaders -->
+    <div class="shader-container">
+        <div class="shader-orb orb-1"></div>
+        <div class="shader-orb orb-2"></div>
+        <div class="shader-orb orb-3"></div>
+    </div>
+    <!-- Top Navigation Deck -->
+    <header class="navbar">
+        <div class="logo" onclick="showPage('hub')" style="cursor: pointer;">
+            <span class="logo-text">ALGO<span class="highlight">VIZ</span></span>
+        </div>
+
+        <!-- Search Algorithms Bar -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearchInput" placeholder="Search algorithms...">
+
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Main Hub View -->
+        <section id="hubView" class="view-section active">
+            <div class="hero-section">
+                <h1 class="glitch-title">Algorithm <span class="neon-green">Visualizations</span></h1>
+                <p class="hero-sub">Watch algorithms come to life. Press play, slow it down, or step through one
+                    operation at a time.</p>
+            </div>
+
+            <!-- Categories Grid (Data Structures Removed) -->
+            <div class="grid-container">
+                <div class="cyber-card" onclick="showCategory('sorting')">
+                    <div class="card-icon neon-green">📊</div>
+                    <h3>Sorting</h3>
+                    <p>Watch sorting algorithms run step by step. Compare, swap, and place elements until sorted.</p>
+                    <span class="card-tag">5 visualizations</span>
+                </div>
+
+                <div class="cyber-card" onclick="showCategory('graph')">
+                    <div class="card-icon neon-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="5" cy="6" r="2"></circle>
+                            <circle cx="19" cy="6" r="2"></circle>
+                            <circle cx="12" cy="18" r="2"></circle>
+                            <path d="M6.5 7.5L10.5 16M17.5 7.5L13.5 16M7 6H17"></path>
+                        </svg>
+                    </div>
+                    <h3>Graph Algorithms</h3>
+                    <p>Step through graph algorithms and watch how they traverse nodes and edges.</p>
+                    <span class="card-tag">6 visualizations</span>
+                </div>
+
+                <div class="cyber-card" onclick="showCategory('searching')">
+                    <div class="card-icon neon-cyan">🔍</div>
+                    <h3>Searching</h3>
+                    <p>Watch linear and binary search hunt for a target value step by step.</p>
+                    <span class="card-tag">2 visualizations</span>
+                </div>
+
+                <div class="cyber-card" onclick="showCategory('core')">
+                    <div class="card-icon neon-green">🧬</div>
+                    <h3>Core Concepts</h3>
+                    <p>Step through the core ideas behind algorithms like recursion and stack frames.</p>
+                    <span class="card-tag">1 visualization</span>
+                </div>
+            </div>
+
+            <!-- Informational Sections -->
+            <div class="info-block">
+                <h2>What is an algorithm visualizer?</h2>
+                <p>An algorithm visualizer turns abstract steps into a moving picture. Instead of reading pseudocode and
+                    imagining what happens, watch the data change in real time.</p>
+            </div>
+
+            <div class="info-block">
+                <h2>How to use these visualizers</h2>
+                <ul>
+                    <li>Pick a category, then choose an algorithm.</li>
+                    <li>Press play to watch it run, or step through one operation at a time.</li>
+                    <li>Change the input and speed to test edge cases and build intuition.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Category View Container -->
+        <section id="categoryView" class="view-section">
+            <div class="category-header">
+                <h1 id="categoryTitle" class="neon-green">Category</h1>
+                <p id="categoryDesc">Description</p>
+            </div>
+
+            <div id="categoryGrid" class="grid-container">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <div class="comparison-container">
+                <h2 id="comparisonTitle">Performance Comparison</h2>
+                <div id="comparisonTableWrapper">
+                    <!-- Table injected dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Visualizer Page View -->
+        <section id="visualizerView" class="view-section">
+            <div class="visualizer-layout">
+                <!-- Sticky Cyber Sidebar -->
+                <aside class="sidebar">
+                    <h4 id="sidebarCategoryTitle" class="sidebar-title">SORTING</h4>
+                    <ul id="sidebarList">
+                        <!-- Populated dynamically -->
+                    </ul>
+                </aside>
+
+                <!-- Visualization Panel -->
+                <div class="visualizer-main">
+                    <div class="viz-header">
+                        <h1 id="algoName" class="neon-green">Algorithm</h1>
+                        <span class="status-badge" id="runtimeStatus">READY</span>
+                    </div>
+
+                    <!-- Cyber Canvas Box -->
+                    <div id="visualizerBox" class="cyber-canvas"></div>
+
+                    <!-- Dynamic Color Legend -->
+                    <div id="legendContainer" class="legend-bar"></div>
+
+                    <!-- Cyber Control Terminal -->
+                    <div class="cyber-controls">
+                        <div class="control-btn-group" id="controlBtnGroup">
+                            <!-- Injected dynamically based on category -->
+                        </div>
+
+                        <div class="slider-group">
+                            <label id="speedLabel">SPEED</label>
+                            <input type="range" id="speedSlider" min="1" max="100" value="70">
+                        </div>
+
+                        <div class="slider-group">
+                            <label id="dynamicSliderLabel">SIZE (<span id="sizeDisplay">15</span>)</label>
+                            <input type="range" id="sizeSlider" min="5" max="30" value="15">
+                        </div>
+                    </div>
+
+                    <!-- Custom Input Box (Sorting/Searching only) -->
+                    <div class="custom-input-box" id="customInputBoxWrapper">
+                        <label>Your own numbers (comma separated):</label>
+                        <div class="input-row">
+                            <input type="text" id="customArrayInput" placeholder="e.g. 8, 3, 5, 1, 9">
+                            <button id="applyCustomBtn" class="cyber-btn secondary">Visualize</button>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippet Display Box -->
+                    <div class="code-container">
+                        <div class="code-title">CODE</div>
+                        <div id="codeSnippetBox">
+                            <!-- Lines injected dynamically with active highlights -->
+                        </div>
+                    </div>
+
+                    <!-- Content Sections -->
+                    <div class="detail-section">
+                        <h3>Time & space complexity</h3>
+                        <table class="cyber-table">
+                            <thead>
+                                <tr>
+                                    <th>CASE</th>
+                                    <th>COMPLEXITY</th>
+                                    <th>NOTES</th>
+                                </tr>
+                            </thead>
+                            <tbody id="complexityTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Step by step</h3>
+                        <ol id="stepByStepList" class="step-list"></ol>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Worked example</h3>
+                        <p id="workedExampleText">Walkthrough description...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
