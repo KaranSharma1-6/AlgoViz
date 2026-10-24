@@ -1490,8 +1490,8 @@ function renderCanvasFrame(stateObj, stepIdx) {
         }).join('');
 
         container.innerHTML = `
-            <div style="position:relative; width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
-                <svg width="100%" height="100%" style="position:absolute; top:0; left:0;">
+            <div style="position:relative; width:600px; height:350px; display:flex; justify-content:center; align-items:center;">
+                <svg width="600" height="350" style="position:absolute; top:0; left:0;">
                     ${svgLines}
                 </svg>
                 ${nodesHtml}
@@ -1645,8 +1645,8 @@ function renderCanvasFrame(stateObj, stepIdx) {
         }).join('');
 
         container.innerHTML = `
-            <div style="position:relative; width:100%; height:100%; overflow:hidden;">
-                <svg width="100%" height="100%" style="position:absolute; top:0; left:0; z-index:1;">${svgLines}</svg>
+            <div style="position:relative; width:600px; height:350px; overflow:hidden;">
+                <svg width="600" height="350" style="position:absolute; top:0; left:0; z-index:1;">${svgLines}</svg>
                 ${nodesHtml}
             </div>
         `;

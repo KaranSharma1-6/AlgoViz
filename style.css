@@ -880,7 +880,6 @@ header, nav, .navbar {
 .graph-container, 
 .recursion-container {
     width: 100% !important;
-    min-width: 700px !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
