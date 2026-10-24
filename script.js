@@ -1441,11 +1441,11 @@ function renderCanvasFrame(stateObj, stepIdx) {
 
         let coords = [];
         if (n === 4) {
-            coords = [{x:200, y:90, id:'A'}, {x:320, y:180, id:'B'}, {x:200, y:270, id:'C'}, {x:80, y:180, id:'D'}];
+            coords = [{x:200, y:50, id:'A'}, {x:320, y:130, id:'B'}, {x:200, y:210, id:'C'}, {x:80, y:130, id:'D'}];
         } else if (n === 6) {
-            coords = [{x:200, y:60, id:'A'}, {x:320, y:120, id:'B'}, {x:320, y:240, id:'C'}, {x:200, y:280, id:'D'}, {x:80, y:240, id:'E'}, {x:80, y:120, id:'F'}];
+            coords = [{x:200, y:45, id:'A'}, {x:320, y:105, id:'B'}, {x:320, y:195, id:'C'}, {x:200, y:225, id:'D'}, {x:80, y:195, id:'E'}, {x:80, y:105, id:'F'}];
         } else {
-            coords = [{x:180, y:80, id:'A'}, {x:320, y:120, id:'B'}, {x:250, y:240, id:'C'}, {x:120, y:180, id:'D'}, {x:200, y:150, id:'E'}];
+            coords = [{x:180, y:50, id:'A'}, {x:320, y:100, id:'B'}, {x:250, y:200, id:'C'}, {x:120, y:140, id:'D'}, {x:200, y:120, id:'E'}];
         }
 
         let svgLines = '';
